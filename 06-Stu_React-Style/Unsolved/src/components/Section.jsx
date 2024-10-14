@@ -2,6 +2,7 @@
 import '../styles/Section.css';
 
 // TODO: Create a styles object called "styles"
+styles = { backgroundColor: 'lightblue', padding: '20px' };
 
 function Section() {
   // TODO: Add a style attribute to `section`
