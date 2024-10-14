@@ -1,8 +1,8 @@
 function Greeting() {
   // welcomeStudent is a helper function which takes in a studentName parameter and uses it to alert a string
   const welcomeStudent = (studentName) => {
-    alert(`Welcome, ${studentName}!`)
-  }
+    alert(`Welcome, ${studentName}!`);
+  };
 
   return (
     <div className="container text-center">
@@ -10,22 +10,22 @@ function Greeting() {
       <div className="list-group">
         {/* TODO: Resolve the issue so that the welcomeStudent function properly alerts the name of the selected student when the button is clicked. */}
         <button 
-          onClick={welcomeStudent('Mary')} 
+          onClick={() => welcomeStudent('Mary')} 
           className="list-group-item list-group-item-action"
         >
-            Mary
+          Mary
         </button>
         <button 
-          onClick={welcomeStudent('Cole')} 
+          onClick={() => welcomeStudent('Cole')} 
           className="list-group-item list-group-item-action"
         >
-            Cole
+          Cole
         </button>
         <button 
-          onClick={welcomeStudent('Rebecca')} 
+          onClick={() => welcomeStudent('Rebecca')} 
           className="list-group-item list-group-item-action"
         >
-            Rebecca
+          Rebecca
         </button>
       </div>
     </div>
@@ -33,3 +33,8 @@ function Greeting() {
 }
 
 export default Greeting;
+
+// Instead of calling the function directly (welcomeStudent('Mary')), 
+// we're now passing an arrow function to onClick that will call welcomeStudent 
+// when the button is clicked: onClick={() => welcomeStudent('Mary')}.
+// This ensures the function gets executed only when the user clicks the button.
