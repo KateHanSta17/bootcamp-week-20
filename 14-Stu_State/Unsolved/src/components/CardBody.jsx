@@ -1,5 +1,5 @@
 // TODO: Add a comment explaining what is being passed to this "child" component as props
-
+// We are passing the count, handleIncrement, and handleDecrement functions as props to the CardBody component.
 function CardBody(props) {
   return (
     <div className="card-body">
