@@ -20,18 +20,18 @@ const OmdbContainer = () => {
       })
       .catch((err) => console.log(err));
 
-  // TODO: Fix the useEffect hook running after every state change
+  // TODO: Fix the useEffect hook running after every state change 
   useEffect(() => {
     searchMovie('The Matrix');
-  });
+  }, []); // empty array to only run once
 
   // TODO: Fix the handleInputChange function
-  const handleInputChange = (e) => console.log(e.target.value);
+  const handleInputChange = (e) => setSearch(e.target.value); // This function should update the `search` state with the value from the input field
 
   // TODO: Fix the handleFormSubmit function not actually searching for the movie
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    setSearch(e.target.value);
+    searchMovie(search); // This function should call the `searchMovie` function with the `search` state
   };
 
   // Destructure the result object to make the code more readable, assign them to empty strings to start
