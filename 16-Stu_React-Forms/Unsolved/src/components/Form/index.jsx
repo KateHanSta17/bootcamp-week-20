@@ -10,6 +10,7 @@ function Form() {
   const [email, setEmail] = useState('');
   const [userName, setUserName] = useState('');
   // TODO: Create a password variable and a function "setPassword" using useState
+  const [password, setPassword] = useState('');
 
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -21,11 +22,12 @@ function Form() {
 
     // Based on the input type, we set the state of either email, username, and password
     // TODO: Add an else statement to the end that will set the password to the value of 'inputValue'
-
     if (inputType === 'email') {
       setEmail(inputValue);
     } else if (inputType === 'userName') {
       setUserName(inputValue);
+    } else if (inputType === 'password') {
+      setPassword(inputValue);
     }
   };
 
@@ -38,8 +40,8 @@ function Form() {
       setErrorMessage('Email or username is invalid');
       // We want to exit out of this code block if something is wrong so that the user can correct it
       return;
-      // Then we check to see if the password is not valid. If so, we set an error message regarding the password.
     }
+    // Then we check to see if the password is not valid. If so, we set an error message regarding the password.
     if (!checkPassword(password)) {
       setErrorMessage(
         `Choose a more secure password for the account: ${userName}`
@@ -49,9 +51,9 @@ function Form() {
 
     // If successful, we want to clear out the input after registration.
     setUserName('');
-    // TODO: Set the password back to an empty string after the user clicks submit
-
+    setPassword(''); // TODO: Set the password back to an empty string after the user clicks submit
     setEmail('');
+    setErrorMessage(''); // Clear any previous error messages
     alert(`Hello ${userName}`);
   };
 
@@ -74,7 +76,13 @@ function Form() {
           placeholder="username"
         />
         {/* TODO Add another input field with a value, name, type, and placeholder of "password" */}
-        {/* TODO Add a `onChange` attribute with a value of `handleInputChange` */}
+        <input
+          value={password}
+          name="password"
+          onChange={handleInputChange}
+          type="password"
+          placeholder="password"
+        />
         <button type="submit">
           Submit
         </button>
@@ -89,3 +97,4 @@ function Form() {
 }
 
 export default Form;
+
