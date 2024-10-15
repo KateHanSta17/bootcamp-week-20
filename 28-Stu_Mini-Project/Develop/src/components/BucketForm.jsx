@@ -2,20 +2,20 @@ import { useState } from 'react';
 
 function BucketForm(props) {
   const [input, setInput] = useState('');
-  let [eagerness, setEagerness] = useState('');
+  const [eagerness, setEagerness] = useState('');
 
   // TODO: Use this array in the return statement below
-  const eagernessLevel = ['high', 'medium', 'low']
+  const eagernessLevel = ['high', 'medium', 'low'];
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!eagerness) {
-      eagerness = 'low';
+      setEagerness('low');
     }
 
     props.onSubmit({
-      id: Math.random(Math.floor() * 1000),
+      id: Math.floor(Math.random() * 1000), // Adjusted this to work properly
       text: input,
       eagerness: eagerness,
     });
@@ -28,8 +28,6 @@ function BucketForm(props) {
     setInput(e.target.value);
   };
 
-  // First we check to see if "edit" prop exists. If not, we render the normal form
-  // If the prop "edit" exists, we know to render the update form instead
   return !props.edit ? (
     <div>
       <form className="bucket-form" onSubmit={handleSubmit}>
@@ -47,9 +45,9 @@ function BucketForm(props) {
           </button>
           <div className="dropdown-content">
             {/* TODO: Add an onClick event that will set the corresponding eagerness level from the `eagernessLevel` array */}
-            <p onClick={}>Must do</p>
-            <p onClick={}>Want to do</p>
-            <p onClick={}>Take it or leave it</p>
+            <p onClick={() => setEagerness('high')}>Must do</p>
+            <p onClick={() => setEagerness('medium')}>Want to do</p>
+            <p onClick={() => setEagerness('low')}>Take it or leave it</p>
           </div>
         </div>
         <button className="bucket-button">Add bucket list item</button>
@@ -72,10 +70,9 @@ function BucketForm(props) {
             {eagerness || 'Priority'}
           </button>
           <div className="dropdown-content">
-            {/* TODO: Add an onClick event that will set the corresponding eagerness level from the `eagernessLevel` array */}
-            <p onClick={}>Must do</p>
-            <p onClick={}>Want to do</p>
-            <p onClick={}>Take it or leave it</p>
+            <p onClick={() => setEagerness('high')}>Must do</p>
+            <p onClick={() => setEagerness('medium')}>Want to do</p>
+            <p onClick={() => setEagerness('low')}>Take it or leave it</p>
           </div>
         </div>
         <button className="bucket-button">Update</button>

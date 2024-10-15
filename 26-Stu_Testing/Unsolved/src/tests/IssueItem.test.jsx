@@ -1,6 +1,8 @@
 import pretty from 'pretty';
 import { render } from '@testing-library/react';
 // TODO: Import the IssueItem component here
+import IssueItem
+ from '../components/IssueItem';
 
 const issue = {
   url: 'https://api.github.com/repos/microsoft/vscode/issues/68',
@@ -15,7 +17,7 @@ describe('IssueItem', () => {
   it('should contain the expected text', () => {
     // TODO: Add a render code block that checks to see if the component renders properly
     // HINT: The render method needs a target element
-    render();
+    render(<IssueItem issue={issue} />);
 
     expect(document.querySelector('.item').textContent).toBe(
       'Git: Support git history in VSCode'
